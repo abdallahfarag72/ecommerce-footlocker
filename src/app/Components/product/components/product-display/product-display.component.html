@@ -1,0 +1,93 @@
+<main class="bg-white p-0 col-12 d-flex justify-content-center">
+    <section class="d-flex flex-wrap col-11 col-xl-10" style="padding: 16px 0;">
+        <div class="image-container col-12 col-lg-8 d-flex justify-content-center align-items-center" style="background: #f0f0f0;"
+            >
+            <img class="img-fluid"  [src]="item.img" alt="shoe">
+        </div>
+        <div class="col-12 col-lg-4 product-data bg-light p-4 pt-5">
+            <h1 class="fs-1 fw-bold lh-sm">{{item.title}}</h1>
+            <p class="fs-6 pb-3">{{item.type}}</p>
+            <p class="fs-4 pb-2 fw-medium">£ {{item.salePrice}}</p>
+            <p class="pb-2">or 4 interest-free payments of £27.50 with</p>
+            <p class="my-2 fs-6 pb-3">{{item.style}}</p>
+            <div class="colors d-flex flex-wrap mx-0 pb-3">
+                @for (variant of item.variants; track $index) {
+                <div class="p-1 me-2 mb-2 variant" (click) = "itemToDisplay($index)">
+                    <img [src]="item.variants[$index].img" class="" style="max-height: 75px; max-width: 75px;" >
+                </div>
+                }
+            </div>
+            <select class="form-select border-black rounded-1" aria-label="Default select example"
+                (change)="onSelectChange($event)">
+                <option value="0">UK</option>
+                <option value="1">EU</option>
+                <option value="2">US</option>
+            </select>
+            <div class="sizeSelection pt-3"><span class="fs-6 text-black">Size: </span><span
+                    class="fs-6 text-black-50">Please select</span></div>
+            <div class="colors row mx-0">
+
+                <div class="d-flex flex-wrap w-100 p-2 pt-0 justify-content-center mt-3">
+                    @if(selectedOption === '0' || selectedOption === '1') {
+                    @for (size of sizes; track $index) {
+                    <button class="border border-dark-subtle rounded-circle p-0 m-1 btn-size"
+                        [ngClass]="{'activeBTN': activeButton === $index}" (click)="setActiveButton($index)"
+                        style="width: 56px; height: 56px;">{{size}}</button>
+                    }
+                    }
+                    @if(selectedOption === '2') {
+                    @for (size of sizesEU; track $index) {
+                    <button class="border border-dark-subtle rounded-circle p-0 m-1 btn-size"
+                        [ngClass]="{'activeBTN': activeButton === $index}" (click)="setActiveButton($index)"
+                        style="width: 56px; height: 56px;">{{size}}</button>
+                    }
+                    }
+
+                </div>
+
+            </div>
+            <div class="sizeSelection pt-3 d-flex align-items-center"><span
+                    class="fs-6 text-black pe-2">Quatity:</span><input type="number"
+                    class="form-control text-center p-2" min="1" style="max-width: 50px;" [(ngModel)]="quantity"></div>
+
+            <ul class="d-flex flex-column align-items-center">
+                <li class="col-12">
+                    <div class="ProductAddToBopis">
+                        <div class="ProductAddToBopis-shipToUser__outer"><span class="Icon Icon--ship"
+                                style="font-size: 1.5rem;"><svg fill="currentColor" fill-rule="evenodd"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M5.824 5.808h9.64v9.539h-3.213c-.502-.803-1.306-1.305-2.31-1.305s-1.807.502-2.31 1.305H3.013v1.808H7.23c.2 1.305 1.305 2.31 2.61 2.31 1.306 0 2.511-1.005 2.612-2.31h4.217c.201 1.305 1.306 2.31 2.611 2.31 1.306 0 2.51-1.005 2.611-2.31H23.7V11.43l-2.712-4.017h-4.016V4H3.012v1.808h2.812zm14.46 3.313l1.105 1.707h-4.218V9.121h3.113zM9.941 17.657a.9.9 0 01-.903-.904.9.9 0 01.903-.904.9.9 0 01.904.904.9.9 0 01-.904.904zm9.54 0a.9.9 0 01-.904-.904.9.9 0 01.904-.904.9.9 0 01.904.904.9.9 0 01-.904.904zm2.31-2.31c-.502-.803-1.306-1.305-2.31-1.305s-1.808.502-2.31 1.305v-2.811h5.021v2.811h-.401z M5.824 6.811H0V8.62h5.824V6.81zM5.824 9.724H0v1.807h5.824V9.724zM5.824 12.536H0v1.807h5.824v-1.807z">
+                                    </path>
+                                </svg></span>
+                            <div class="ProductAddToBopis-shipToUser__inner"><span class="fs-6 fw-bold">Ship to
+                                    me</span><span class="font-caption">Arrives in 5-6 business days</span></div>
+                        </div>
+                        <div class="ProductAddToBopis-separator">OR</div>
+                        <div class="">
+                            <div class="ProductAddToBopis-checkbox__outer">
+                                <input id="bopis-pickUpInStore" type="checkbox">
+                                <label for="bopis-pickUpInStore">
+                                    <i class="fas fa-check"></i>
+                                </label>
+                                <span class="ProductAddToBopis-checkbox__inner">
+                                    <span id="bopis-checkboxLabel" class="fs-6 fw-bold">Pick Up In Store
+                                    </span>
+                                    <span class="font-caption">Select your local
+                                        store to grab your order
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <p class="fs-6 fw-medium pt-3 text-success">{{itemAdded}}</p>
+                <li class="col-12 col--secondary"><button type="submit" class="Button" (click)="addToCart()">Add To
+                        Cart</button>
+
+                </li>
+
+            </ul>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,68 @@
+<div class="">
+  <div [id]="id" class="carousel slide">
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        *ngFor="let innerArr of items.slice(0, 12); let i = index"
+        [class.active]="i === 0"
+      >
+        <div class="cards-wrapper row">
+          <a
+            class="card col-md-3 col-12"
+            *ngFor="let object of innerArr"
+            routerLink="/product/{{ object.id }}/{{ object.variants[0].id }}"
+          >
+            <img
+              [src]="object.variants[0].img"
+              class="card-img-top"
+              alt="Image {{ i + 1 }}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ object.title }}
+              </h5>
+              <p class="card-text">{{ object.type }}</p>
+              <ng-container *ngIf="object.variants[0].isSale">
+                <p class="card-sale-price">
+                  ${{ object.variants[0].salePrice }}
+                  <span class="card-full-price"
+                    >${{ object.variants[0].originalPrice }}</span
+                  >
+                </p>
+              </ng-container>
+              <ng-container *ngIf="!object.variants[0].isSale">
+                <p>${{ object.variants[0].originalPrice }}</p>
+              </ng-container>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target=""
+      [attr.data-bs-target]="'#' + id"
+      data-bs-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon bg-black rounded-circle"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target=""
+      [attr.data-bs-target]="'#' + id"
+      data-bs-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon bg-black rounded-circle p-3"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

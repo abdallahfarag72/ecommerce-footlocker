@@ -1,0 +1,24 @@
+<!-- Sale -->
+<div>
+  <h1 style="font-weight: bold">SALE</h1>
+  <p>
+    Don't miss the chance to shop all your Adidas Favorites at discounted
+    prices. Shop now
+  </p>
+</div>
+<div class="small d-md-none d-block">
+  <app-card [items]="saleItemsSmall" [id]="'saleSmall'"></app-card>
+</div>
+<div class="big d-none d-md-block">
+  <app-card [items]="saleItemsBig" [id]="'saleBig'"></app-card>
+</div>
+<!-- Noraml -->
+<div>
+  <h1 style="font-weight: bold">NEW ARRIVALS</h1>
+</div>
+<div class="big d-none d-md-block">
+  <app-card [items]="normalItemsBig" [id]="'normalBig'"></app-card>
+</div>
+<div class="small d-md-none d-block">
+  <app-card [items]="normalItemsSmall" [id]="'normalSmall'"></app-card>
+</div>

@@ -1,0 +1,32 @@
+<main class="container-fluid py-4">
+  <section class="row gap-0">
+    <aside class="col-12 col-md-4 col-xxl-3 mb-4">
+      <app-aside></app-aside>
+    </aside>
+    <section class="col-12 col-md-8 col-xxl-9">
+      @if (paramsFilter.title) {
+
+      <h4
+        style="font-size: 2rem"
+        class="text-uppercase fw-bold text-white bg-black p-4"
+      >
+        {{ paramsFilter.title }}
+      </h4>
+      }
+      <article class="d-flex gap-2 flex-wrap justify-content-center">
+        @for (card of cards; track $index) {
+        <app-list-card [cardData]="card"></app-list-card>
+        }
+      </article>
+    </section>
+  </section>
+
+  <article>
+    <app-nav
+      [hasNext]="hasNext"
+      [currentPage]="currentPage"
+      [hasPrevious]="hasPrevious"
+      [maxPages]="maxPages"
+    ></app-nav>
+  </article>
+</main>

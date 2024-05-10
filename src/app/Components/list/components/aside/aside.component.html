@@ -1,0 +1,95 @@
+<form (submit)="handleSubmit($event)" class="">
+  <p class="h4">Filter</p>
+  <section>
+    <div class="mb-2">
+      <mat-accordion multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Type</mat-panel-title>
+          </mat-expansion-panel-header>
+          <article>
+            @for (type of filterTypes;let index = $index ;track index) {
+            <label
+              for="{{ type }}"
+              class="d-flex my-1 py-2 gap-2 justify-content-between align-items-center text-capitalize"
+            >
+              {{ type }}
+              <input
+                [checked]="paramsFilter.type.includes(type)"
+                type="checkbox"
+                value="{{ type }}"
+                name="type"
+                id="{{ type }}"
+              />
+            </label>
+            }
+          </article>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="mb-2">
+      <mat-accordion multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Gender</mat-panel-title>
+          </mat-expansion-panel-header>
+          <article>
+            @for (gender of ["men","women","kids"];let index = $index ;track
+            index) {
+            <label
+              for="gender-{{ gender }}"
+              class="d-flex my-1 py-2 gap-2 justify-content-between align-items-center text-capitalize"
+            >
+              {{ gender }}
+              <input
+                [checked]="paramsFilter.gender.includes(gender)"
+                type="checkbox"
+                value="{{ gender }}"
+                name="gender"
+                id="gender-{{ gender }}"
+              />
+            </label>
+            }
+          </article>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div>
+      <mat-accordion multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Price</mat-panel-title>
+          </mat-expansion-panel-header>
+          <article>
+            <div
+              class="d-flex justify-content-evenly gap-2 align-content-center"
+            >
+              <input
+                [value]="paramsFilter.price_from || ''"
+                type="number"
+                min="0"
+                name="price_from"
+              />
+              <span class="lh-lg"> To </span>
+              <input
+                [value]="paramsFilter.price_to || ''"
+                type="number"
+                name="price_to"
+              />
+            </div>
+          </article>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </section>
+  <div class="d-flex justify-content-evenly align-items-center">
+    <button class="btn bg-black text-white w-50 mt-2 interactive">
+      Filter
+    </button>
+    <a
+      routerLink="/list"
+      class="btn text-black border border-2 border-black interactive w-25 mt-2"
+      >Reset</a
+    >
+  </div>
+</form>

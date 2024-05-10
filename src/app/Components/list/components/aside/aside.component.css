@@ -1,0 +1,23 @@
+label:hover {
+  scale: 1.1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+input {
+  width: 120px;
+  min-width: 0;
+}
+
+.interactive {
+  transition: scale 100ms linear;
+}
+
+.interactive:hover {
+  scale: 1.1;
+}
+
+.interactive:active {
+  scale: 1;
+  cursor: pointer;
+}

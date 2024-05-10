@@ -1,0 +1,122 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+  <div class="container-fluid mx-3">
+    <a class="navbar-brand" routerLinkActive="active" routerLink="/home">
+      <img src="../../../assets/footlocker.svg" alt="Logo" height="30" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a
+            class="nav-link text-light"
+            routerLinkActive="active"
+            routerLink="/list"
+            [queryParams]="{ gender: 'men' }"
+            >MEN <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-light"
+            routerLinkActive="active"
+            routerLink="/list"
+            [queryParams]="{ gender: 'women' }"
+            >WOMEN</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-light"
+            routerLinkActive="active"
+            routerLink="/list"
+            [queryParams]="{ gender: 'kids' }"
+            >KIDS</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-light"
+            routerLinkActive="active"
+            routerLink="/list"
+            >ALL</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto ms-auto">
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mx-1">
+            <input
+              id="searchInput"
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              name="searchData"
+              (keydown.enter)="onEnterkeydown($event)"
+              [(ngModel)]="inputValue"
+            />
+          </form>
+        </li>
+
+        <li class="nav-item d-flex justify-content-start align-items-center">
+          <!--falsy value check on user state-->
+          @if(!this.userState){
+          <a
+            class="nav-link text-light pe-2"
+            routerLinkActive="active"
+            routerLink="/login"
+            ><i class="fas fa-user"></i
+          ></a>
+          }
+          <!-- Use safe navigation operator here -->
+          @if(this.userState !== '' && this.userState !== undefined){
+          <a
+            class="nav-link text-light dropdown-toggle d-flex justify-content-center align-items-center p-0"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p class="text-white m-0">{{ userState }}</p>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownMenuLink"
+            (click)="signOut()"
+          >
+            <li><a class="dropdown-item">Sign Out</a></li>
+          </ul>
+
+          }
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-light"
+            routerLinkActive="active"
+            routerLink="/cart"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
+        </li>
+        @if(userRole=="Admin"){
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/dashboard" href="#"
+            ><i class="fas fa-tachometer-alt"></i
+          ></a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

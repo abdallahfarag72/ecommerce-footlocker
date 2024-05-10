@@ -1,0 +1,221 @@
+<div class="container-fluid p-0 mt-5">
+  <!-- #sectionOne -->
+  <div class="sectionOne">
+    <div
+      id="carouselExampleAutoplaying"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../assets/images/girlwithhat.jpeg"
+            alt=""
+            class="img-fluid"
+            class="d-block w-100"
+            alt="girlWearingHat"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../assets/images/runningpeople.jpg"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="people running"
+          />
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="btnExplore">
+        <button type="button" routerLinkActive="active" routerLink="/list">
+          Explore Now
+          <i class="material-icons arrow_iconn">arrow_forward</i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- #sectionTwo -->
+
+  <!-- #sectionThree -->
+  <div class="logosSection row m-0 p-0 justify-content-center">
+    <div class="col-md-auto">
+      <img
+        src="../assets/images/adidas3logo.svg"
+        alt=""
+        class="logoIds img-fluid mt-4 mr-3 ml-3"
+      />
+      <img
+        src="../assets/newbalance.svg"
+        alt=""
+        class="logoIds newBalance img-fluid mt-4 mr-3 ml-3"
+      />
+      <img
+        src="../assets/images/adidasflogo.svg"
+        alt=""
+        class="logoIds img-fluid mt-4 mr-3 ml-3"
+      />
+    </div>
+  </div>
+  <!-- #sectionFour -->
+  <div class="sNCards row justify-content-center mt-5 m-0 p-0">
+    <div class="col-md-auto d-flex flex-wrap justify-content-around">
+      <div class="div-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/mansitting.png"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3 mr-md-4"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{
+            type: 'Grade School Shoes'
+          }"
+        />
+        <h1
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{
+            type: 'Grade School Shoes'
+          }"
+        >
+          Vintage Vibe
+        </h1>
+        <a
+          href="#"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{
+            type: 'Grade School Shoes'
+          }"
+          >SHOP ADIDAS</a
+        >
+      </div>
+      <div class="div-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/blueshoes.png"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3 mr-md-3"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Women Shoes' }"
+        />
+        <h1
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Women Shoes' }"
+        >
+          Back in Stock
+        </h1>
+        <a
+          href="#"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Women Shoes' }"
+          >SHOP DUNK</a
+        >
+      </div>
+      <div class="div-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/tnair.png"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Men Shoes' }"
+        />
+        <h1
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Men Shoes' }"
+        >
+          90s Skate Of Mind
+        </h1>
+        <a
+          href="#"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ type: 'Men Shoes' }"
+          >SHOP VANS</a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- #sectionFive -->
+  <div class="categorySection row justify-content-center mt-5 m-0 p-0">
+    <div
+      class="imagesGroup col-md-auto d-flex flex-wrap justify-content-around"
+    >
+      <div class="image-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/runningboy.jpg"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3 mr-md-4"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'men' }"
+        />
+        <button
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'men' }"
+        >
+          Men
+        </button>
+      </div>
+      <div class="image-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/fallinggirl.jpg"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3 mr-md-3"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'women' }"
+        />
+        <button
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'women' }"
+        >
+          Women
+        </button>
+      </div>
+      <div class="image-image d-flex flex-column align-items-center mb-4">
+        <img
+          src="../assets/images/dancingkids.jpg"
+          alt=""
+          class="shoppingSection img-fluid mx-3 mb-3"
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'kids' }"
+        />
+        <button
+          routerLinkActive="active"
+          routerLink="/list"
+          [queryParams]="{ gender: 'kids' }"
+        >
+          Kids
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="image-slide-component">
+    <app-image-slide-sale></app-image-slide-sale>
+  </div>
+</div>

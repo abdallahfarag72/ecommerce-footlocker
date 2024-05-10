@@ -1,0 +1,8 @@
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+  color: #dc3545 !important; 
+  
+}
+.dropdown-menu{
+  cursor: pointer;
+}

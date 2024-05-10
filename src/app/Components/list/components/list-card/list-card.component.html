@@ -1,0 +1,63 @@
+<a
+  routerLink="/product/{{ cardData.id }}/{{
+    cardData.variants[activeVariant].id
+  }}"
+>
+  <mat-card class="card">
+    <div class="image-container">
+      <img
+        mat-card-image
+        src="{{ cardData.variants[activeVariant].img }}"
+        alt="img"
+      />
+    </div>
+    <mat-card-content class="bg-white">
+      <div class="card-details overflow-hidden">
+        <div class="d-flex gap-2 p-1 mb-2 image-selector overflow-magic">
+          @for (variant of cardData.variants;let index = $index; track index) {
+          <div
+            class=""
+            [className]="
+              index == activeVariant ? 'active position-relative' : ''
+            "
+          >
+            <img
+              alt="img"
+              src="{{ variant.img }}"
+              style="max-width: 37px"
+              (click)="handleImageClick($event, index)"
+            />
+          </div>
+          }
+        </div>
+        <section class="card-text">
+          <p class="h6 fw-bolder mb-2 title">
+            {{ cardData.title }}
+          </p>
+          <div class="small text-secondary mb-2">
+            <p>
+              {{ cardData.type }}
+            </p>
+            <p>
+              {{ cardData.variants[activeVariant].style }}
+            </p>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            @if (cardData.variants[activeVariant].isSale) {
+            <p class="fw-bolder text-decoration-line-through">
+              {{ cardData.variants[activeVariant].originalPrice }}
+            </p>
+            <p class="fw-bolder text-danger">
+              {{ cardData.variants[activeVariant].salePrice }}
+            </p>
+            }@else {
+            <p class="fw-bolder">
+              {{ cardData.variants[activeVariant].salePrice }}
+            </p>
+            }
+          </div>
+        </section>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</a>

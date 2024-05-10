@@ -1,0 +1,23 @@
+<main class="bg-white p-0 col-12 d-flex flex-column align-items-center">
+    <div class="d-flex col-11 col-xl-10 justify-content-start align-items-center gap-5 fs-5 fw-medium border m-0 ps-5">
+        <button class="fs-4 fw-medium list-group-item d-flex justify-content-center align-items-center" (click)="displayData(0)"
+            style="min-height: 3.5rem;">
+            Details
+        </button>
+        <button class="fs-4 fw-medium list-group-item d-flex justify-content-center align-items-center" 
+        (click)="displayData(1)"
+        style="min-height: 3.5rem;">
+            Reviews
+        </button>
+    </div>
+    @if(displayDataContent == 0) {
+    <section class="col-11 col-xl-10">
+        <app-product-details>details</app-product-details>
+    </section>
+    }
+    @if(displayDataContent == 1) {
+    <section class="col-11 col-xl-10">
+        <app-reviews>Reviews</app-reviews>
+    </section>
+    }
+</main>

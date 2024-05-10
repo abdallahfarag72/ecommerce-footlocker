@@ -1,0 +1,63 @@
+<nav>
+  <ul class="d-flex justify-content-center gap-3 mt-5 list-unstyled">
+    <li class="">
+      <a
+        [queryParamsHandling]="'merge'"
+        [routerLink]="['/list']"
+        [queryParams]="{ p: 0 }"
+        class="text-decoration-none"
+        [ngClass]="{
+          disabled: currentPage == 0
+        }"
+        >First</a
+      >
+    </li>
+    <li class="">
+      <a
+        [queryParamsHandling]="'merge'"
+        [routerLink]="['/list']"
+        [queryParams]="{ p: currentPage - 1 }"
+        class="text-decoration-underline"
+        [ngClass]="{ disabled: !hasPrevious }"
+        >Previous</a
+      >
+    </li>
+    @for (count of [currentPage,currentPage+1,currentPage+2]; track $index) {
+    <li class="">
+      <a
+        [queryParamsHandling]="'merge'"
+        [routerLink]="['/list']"
+        [queryParams]="{ p: count }"
+        class="text-decoration-none"
+        [ngClass]="{
+          active: count == currentPage,
+          disabled: count > maxPages
+        }"
+        >{{ count }}</a
+      >
+    </li>
+    }
+    <li class="">
+      <a
+        class="text-decoration-underline"
+        [queryParamsHandling]="'merge'"
+        [ngClass]="{ 'disabled ': !hasNext }"
+        [routerLink]="['/list']"
+        [queryParams]="{ p: currentPage + 1 }"
+        >Next</a
+      >
+    </li>
+    <li class="">
+      <a
+        [queryParamsHandling]="'merge'"
+        [routerLink]="['/list']"
+        [queryParams]="{ p: maxPages }"
+        class="text-decoration-none"
+        [ngClass]="{
+          disabled: currentPage == maxPages
+        }"
+        >Last</a
+      >
+    </li>
+  </ul>
+</nav>

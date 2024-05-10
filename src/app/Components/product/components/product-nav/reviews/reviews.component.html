@@ -1,0 +1,73 @@
+<main class="fs-6 border m-0 py-4 text-black border-top-0 d-flex flex-column">
+    <div class="ps-5 pt-4">
+        <p class="fs-2 fw-bold py-2">Reviews</p>
+        <p class="fs-6">Review this product</p>
+    </div>
+    <div class="star-container align-self-center">
+        <div class="star-widget">
+
+            <input type="radio" name="rate" id="rate-5" (click)="setStarNumber(5)">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-4" (click)="setStarNumber(4)">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-3" (click)="setStarNumber(3)">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-2" (click)="setStarNumber(2)">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-1" (click)="setStarNumber(1)">
+            <label for="rate-1" class="fas fa-star"></label>
+
+            <div class="comment-area" action="#">
+                <header></header>
+                <div class="textarea">
+                    <textarea name="comment" id="review" cols="30" placeholder="Descirbe your experience..."
+                        [(ngModel)]="textareaValue"></textarea>
+                </div>
+                <div class="btn-submit">
+                    <button (click)="addReview()">Add Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="py-4 px-5 review-section">
+        <hr>
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starNotFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starNotFilled.svg" style="width: 15px; height: 15px;">
+        <br />
+        <p class="mt-3 fs-5 text-black fw-medium">Sneakysteve</p>
+
+        <p class="mt-4 fs-6 ">Bought two pairs and both the quality on each pair is terrible, scratches on the leather
+            and just general sloppiness of them isn't the standard I would expect. Makes you realise just how mass
+            produced these are</p>
+        <hr>
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <img src="/assets/starFilled.svg" style="width: 15px; height: 15px;">
+        <br />
+        <p class="mt-3 fs-5 text-black fw-medium">TianaoL831910531</p>
+
+        <p class="mt-4 fs-6 ">Fit true to size, upper material is so soft compare to GR dunks. Colour way is spot on</p>
+        
+
+
+        @if(reviews) {
+        <hr>
+        @for (item of reviews; track $index) {
+        @for(star of item.starIcons; track $index) {
+        <img [src]="star" style="width: 15px;
+        height: 15px;">
+        }
+        <br />
+        <p class="mt-3 fs-5 text-black fw-medium">{{item.userName}}</p>
+
+        <p class="mt-4 fs-6 ">{{item.comment}}</p>
+        <hr>
+        }
+        }
+    </section>
+</main>
